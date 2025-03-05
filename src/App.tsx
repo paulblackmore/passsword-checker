@@ -13,7 +13,7 @@ type ItemProps = {
 
 type Props = Omit<ItemProps, 'item'>;
 
-const passwordHint: { [key: number]: string } = {
+const passwordFeedback: { [key: number]: string } = {
   0: 'weak',
   1: 'weak',
   2: 'medium',
@@ -65,16 +65,16 @@ const PasswordStrengthValidationList = ({ password }: Props) => {
 };
 
 const PasswordStrengthIndicator = ({ password }: Props) => {
-  const strength = passwordValidatonList.filter((item) =>
+  const passswordStrength = passwordValidatonList.filter((item) =>
     item.isValid(password)
   );
 
   return (
     <div className='flex flex-col gap-2 w-full'>
-      <h3>{`Password is ${passwordHint[strength.length]}`} </h3>
+      <h3>{`Password is ${passwordFeedback[passswordStrength.length]}`} </h3>
       <div className='w-full h-2 bg-gray-500 rounded'>
         <div
-          className={`w-${strength.length}/4 h-2 bg-green-500 rounded`}
+          className={`w-${passswordStrength.length}/4 h-2 bg-green-500 rounded`}
         ></div>
       </div>
     </div>
