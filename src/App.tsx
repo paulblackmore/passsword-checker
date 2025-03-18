@@ -69,12 +69,22 @@ const PasswordStrengthIndicator = ({ password }: Props) => {
     item.isValid(password)
   );
 
+  const percentageStrengthMap: { [key: number]: string } = {
+    0: 'w-0/4',
+    1: 'w-1/4',
+    2: 'w-2/4',
+    3: 'w-3/4',
+    4: 'w-full',
+  };
+
   return (
     <div className='flex flex-col gap-2 w-full'>
       <h3>{`Password is ${passwordFeedback[passswordStrength.length]}`} </h3>
       <div className='w-full h-2 bg-gray-500 rounded'>
         <div
-          className={`w-${passswordStrength.length}/4 h-2 bg-green-500 rounded`}
+          className={`${
+            percentageStrengthMap[passswordStrength.length]
+          } h-2 bg-green-500 rounded`}
         ></div>
       </div>
     </div>
